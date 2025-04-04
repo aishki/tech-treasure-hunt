@@ -225,7 +225,7 @@ export default function TreasureHunt() {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 sm:grid-cols-20 gap-2 md:gap-4">
+      <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 md:gap-4">
         {Array.from({ length: 100 }, (_, i) => i + 1).map((boxNumber) => (
           <Box
             key={boxNumber}

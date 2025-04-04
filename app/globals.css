@@ -48,34 +48,18 @@ h6,
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* Space background with stars */
+/* Space background with image */
 .space-background {
-  background: linear-gradient(to bottom, #000000, #050520, #090933);
+  background: url('/public/galaxy-bg.gif') no-repeat center center;
+  background-size: cover;
   position: relative;
   overflow: hidden;
-}
-
-.space-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(1px 1px at 25% 25%, rgba(255, 255, 255, 0.9) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
-    radial-gradient(2px 2px at 75% 75%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
-    radial-gradient(2px 2px at 10% 90%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 15%, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 0.5;
-  z-index: 0;
 }
 
 /* Nebula effect */
@@ -128,9 +112,11 @@ h6,
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -145,9 +131,11 @@ h6,
   0% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
+
   100% {
     transform: translateY(0px);
   }
@@ -159,10 +147,12 @@ h6,
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -208,9 +198,11 @@ h6,
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -238,6 +230,7 @@ h6,
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -261,10 +254,12 @@ h6,
 
 /* Error message animation */
 @keyframes shake {
+
   0%,
   100% {
     transform: translateX(0);
   }
+
   10%,
   30%,
   50%,
@@ -272,6 +267,7 @@ h6,
   90% {
     transform: translateX(-5px);
   }
+
   20%,
   40%,
   60%,
@@ -283,4 +279,3 @@ h6,
 .shake-animation {
   animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
-

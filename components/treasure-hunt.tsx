@@ -6,6 +6,7 @@ import Box from "@/components/box";
 import QuestionModal from "@/components/question-modal";
 import WinAnimation from "@/components/win-animation";
 import LoseAnimation from "@/components/lose-animation";
+import AdminPanel from "@/components/admin-panel";
 import { BarChart3, Trophy, AlertTriangle } from "lucide-react";
 
 type Question = {
@@ -172,6 +173,28 @@ export default function TreasureHunt() {
     setCurrentQuestion(null);
   };
 
+  // Admin functions
+  const handleResetBox = (boxNumber: number) => {
+    setBoxStatus((prev) => ({
+      ...prev,
+      [boxNumber]: {
+        status: "unanswered",
+        attempts: 0,
+      },
+    }));
+  };
+
+  const handleResetAllBoxes = () => {
+    const resetStatus: BoxStatus = {};
+    Object.keys(boxStatus).forEach((key) => {
+      resetStatus[Number.parseInt(key)] = {
+        status: "unanswered",
+        attempts: 0,
+      };
+    });
+    setBoxStatus(resetStatus);
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -184,6 +207,11 @@ export default function TreasureHunt() {
 
   return (
     <div className="relative">
+      <AdminPanel
+        onResetBox={handleResetBox}
+        onResetAll={handleResetAllBoxes}
+      />
+
       <div className="mb-6 p-4 bg-black/30 border border-cyan-800/30 rounded-lg backdrop-blur-sm">
         <h2 className="text-xl font-bold text-cyan-300 mb-3 glow-text font-orbitron">
           Traveller Progress

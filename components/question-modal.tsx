@@ -29,12 +29,18 @@ export default function QuestionModal({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (answer.trim()) {
-      onSubmit(answer.trim());
-      setAnswer("");
-      // Show error message for incorrect answers
-      setError(true);
-      // Clear error after 3 seconds
-      setTimeout(() => setError(false), 3000);
+      // Store the current answer to check if it's wrong after onSubmit
+      const currentAnswer = answer.trim();
+      onSubmit(currentAnswer);
+
+      // If attempts didn't change after submission, it means the answer was wrong
+      setTimeout(() => {
+        if (remainingAttempts === maxAttempts - attempts) {
+          setError(true);
+          // Clear error after 3 seconds
+          setTimeout(() => setError(false), 3000);
+        }
+      }, 100);
     }
   };
 
